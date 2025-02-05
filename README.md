@@ -1,6 +1,19 @@
 # KNO event reconstruction
 KNO detector말고 다른 detector에서도 사용은 가능
 
+## 전체적인 코드 실행
+
+0. WCSim을 통해 MC 데이터 생성 (root 파일)
+
+1. event_selection.py 코드를 이용하여 root파일을 h5 파일로 변환 (최초 한번만 진행)
+
+2. training.py 코드를 이용하여 모델을 학습
+
+    2.1 training.py 코드로 학습시 추가 학습이 필요하거나 학습이 중단됬을시 --transfer_learning 옵션을 이용하기
+
+3. validation.py 코드를 이용하여 모델 평가를 위한 결과 뽑기
+
+4. eval_*.ipynb 코드를 이용해서 성능확인인
 
 ## Conda install
     ### env_name에 원하는 콘다환경 이름 넣기
@@ -83,6 +96,17 @@ KNO detector말고 다른 detector에서도 사용은 가능
 - loss_pid.ipynb : pid loss만 확인(accuracy도 같이)
 - loss_other.ipynb : pid를 제외한 task들의 loss확인
 
-## evaluation
+## Evaluation
 eval_*.ipynb 코드는 모두 각 task들의 결과를 확인하는 코드다.
 최소한의 결과만 보도록 되어 있어 본인이 맞게 수정을 하면됨.
+
+
+## Event Selection
+WCSim에서 만듬 root파일을 모델 학습을 위해 h5파일로 변환한다.
+그 과정에서 event selection도 같이 진행
+
+    python event_selection.py -i root_file.root -o h5_file.h5
+
+event_selection.py 파일 안데 libWCSimRoot.so파일 경로 설정은 각각의 WCSim 환경에 맞춰 설정
+ 
+ ROOT.gSystem.Load("path/libWCSimRoot.so")
