@@ -89,7 +89,7 @@ KNO detector말고 다른 detector에서도 사용은 가능
 - --epoch : 모델이 전체데이터에 대하여 몇번의 학습할지 설정.
 - --batch : 학습시 한번에 학습할 event수. 본인의 gpu환경에 맞춰 설정하면 됨
 - --learningRate : 학습률. 0.0001을 기본으로 설정해두고 사용하면 된다.
-- --randomseed : 데이터를 random 하게 섞기기
+- --randomseed : 데이터를 random 하게 섞기
     
 ## Loss check
 기본적으로 두 코드 모두 path 설정은 따로 해주어야 한다.
@@ -107,6 +107,6 @@ WCSim에서 만듬 root파일을 모델 학습을 위해 h5파일로 변환한�
 
     python event_selection.py -i root_file.root -o h5_file.h5
 
-event_selection.py 파일 안데 libWCSimRoot.so파일 경로 설정은 각각의 WCSim 환경에 맞춰 설정
+event_selection.py 파일 안에 libWCSimRoot.so파일 경로 설정은 각각의 WCSim 환경에 맞춰 설정
  
- ROOT.gSystem.Load("path/libWCSimRoot.so")
+    ROOT.gSystem.Load("path/libWCSimRoot.so")
