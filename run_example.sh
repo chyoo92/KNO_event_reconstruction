@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source /opt/sw/anaconda3/etc/profile.d/conda.sh
-conda activate /home/chyoo/.conda/envs/pt113cu117
 
 #### vertex electron example
 python training.py --config config_elec.yaml -o vtx_electron_test \
